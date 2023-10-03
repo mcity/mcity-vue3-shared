@@ -1,7 +1,7 @@
 <template>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div>
-    <v-toolbar app dark color="#00274C" :clipped-left="true" height="45px" style="padding: 0.2rem 1.5rem; margin: auto; box-shadow: 0px 0.5px 0.6px hsl(0deg 0% 63%/ 0.36),
+    <v-toolbar app dark color="primary" :clipped-left="true" height="45px" style="padding: 0.2rem 1.5rem; margin: auto; box-shadow: 0px 0.5px 0.6px hsl(0deg 0% 63%/ 0.36),
     0px 1.6px 1.8px -0.8px hsl(0deg 0% 63%/ 0.36),
     -0.1px 3.9px 4.4px -1.7px hsl(0deg 0% 63%/ 0.36),
     -0.1px 9.5px 10.7px -2.5px hsl(0deg 0% 63%/ 0.36);">
@@ -19,7 +19,7 @@
           nudge-right="77px">
           <template v-slot:activator="{ props }">
             <v-btn color="primary" light v-bind="props" style="box-shadow: none;">
-              <div style="color:white; font-size: 24px;">
+              <div style="color:white; font-size: 1.5rem;">
                 MENU
                 <i class="fa fa-bars"></i>
               </div>
@@ -217,16 +217,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 a.v-list-item:hover {
   text-decoration: none;
 }
 
 .bg-members {
+  margin-top:0.75rem;
   background-color: #C55311;
 }
 
 .bg-members-hover {
+  margin-top: 0.75rem;
   background-color: #9F3F07;
 }
 
