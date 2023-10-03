@@ -22,26 +22,30 @@
               </div>
             </v-btn>
           </template>
-          <v-list compact style="min-width: 1000px; max-width: 400px; max-height: 100vh;" class="overflow-y-auto">
+          <v-list compact style="min-width: 400px; max-width: 400px; max-height: 85vh;" class="overflow-y-auto">
             <v-container fluidgrid-list-sm>
               <v-layout v-for="(itemCategory, categoryIndex) in applicationCategories" :key="categoryIndex" xs4 column
-                wrap style="border: 1px solid green; display:flex; flex-direction: column;">
+                wrap style="border: 0px solid green; display:flex; flex-direction: column;">
 
-                <v-flex xs3 class="Suneeth" >
-                  <v-hover>
-                    <v-list-item slot-scope="{ hover }" :href="itemCategory.link"
-                      :class="getCssClassForCategory(itemCategory.text, hover)">
-                      <svg-icon :url="itemCategory.svg" :style="getFontColorForMembersCategory(itemCategory.text)" />
+                <v-hover>
+                  <v-list-item slot-scope="{ hover }" :href="itemCategory.link"
+                    :class="getCssClassForCategory(itemCategory.text, hover)">
+                    <div class="d-flex" style="padding-left:0px;">
+
+                      <svg-icon :url="itemCategory.svg" :style="getFontColorForMembersCategory(itemCategory.text)"
+                        />
                       <v-list-item-content class="mcity-menu-category-member"
                         :style="getFontColorForMembersCategory(itemCategory.text)"
                         style="overflow:visible; font-size: 20px; font-weight: 500; white-space: nowrap;">
                         {{ itemCategory.text.toUpperCase() }}
                       </v-list-item-content>
-                    </v-list-item>
-                  </v-hover>
-                </v-flex>
+                    </div>
+
+                  </v-list-item>
+                </v-hover>
                 <v-layout column wrap style="display: flex; flex-direction: column;">
-                  <v-flex class="Suneeth" style="border: 1px solid blue;" v-for="(item, index) in getCategoryMembers(itemCategory.text)" :key="index" xs3>
+                  <v-flex class="Suneeth"
+                    v-for="(item, index) in getCategoryMembers(itemCategory.text)" :key="index" xs3>
                     <v-list-item :href="item.link" rel="noopener">
                       <div class="d-flex" style="padding-left:66px;">
                         <svg-icon :url="item.svg" />
@@ -57,7 +61,7 @@
 
 
               </v-layout>
-              
+
             </v-container>
           </v-list>
         </v-menu>
@@ -85,7 +89,8 @@
           <v-divider style="margin:0px;" />
           <v-list>
             <v-list-tile>
-              <v-btn flat class="mcity-no-padding" href="https://keys.um.city/password" v-bind="on" style="font-size:20px">
+              <v-btn flat class="mcity-no-padding" href="https://keys.um.city/password" v-bind="on"
+                style="font-size:20px">
                 Change Password
                 <svg-icon :color="gray" class="ml-2" size="sm" url="https://static.um.city/icons/fingerprint-solid.svg" />
               </v-btn>
