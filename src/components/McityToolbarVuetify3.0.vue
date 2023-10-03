@@ -1,12 +1,15 @@
 <template>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div>
-    <v-toolbar app dark color="primary" :clipped-left="true" height="45px">
+    <v-toolbar app dark color="#00274C" :clipped-left="true" height="45px" style="padding: 0.2rem 1.5rem; margin: auto; box-shadow: 0px 0.5px 0.6px hsl(0deg 0% 63%/ 0.36),
+    0px 1.6px 1.8px -0.8px hsl(0deg 0% 63%/ 0.36),
+    -0.1px 3.9px 4.4px -1.7px hsl(0deg 0% 63%/ 0.36),
+    -0.1px 9.5px 10.7px -2.5px hsl(0deg 0% 63%/ 0.36);">
       <router-link to="/" class="hidden-sm-and-down">
         <mcity-logo class="mcity-logo-padding-top" />
       </router-link>
       <v-spacer />
-      <v-toolbar-title class="mcity-subtitle" style="font-size: 20px;">
+      <v-toolbar-title class="mcity-subtitle" style="font-size: 20px; font-weight: 500;">
         {{ title }}
       </v-toolbar-title>
       <v-spacer />
@@ -15,53 +18,43 @@
         <v-menu content-class="elevation-1" left v-if="showApplicationMenu" v-model="appMenu" offset-y allow-overflow
           nudge-right="77px">
           <template v-slot:activator="{ props }">
-            <v-btn color="primary" dark v-bind="props" style="box-shadow: none;">
+            <v-btn color="primary" light v-bind="props" style="box-shadow: none;">
               <div style="color:white; font-size: 24px;">
                 MENU
                 <i class="fa fa-bars"></i>
               </div>
             </v-btn>
           </template>
-          <v-list compact style="min-width: 400px; max-width: 400px; max-height: 85vh;" class="overflow-y-auto">
+          <v-list compact style="min-width: 400px; max-width: 400px; max-height: 85vh; margin-top:0.25rem" class="overflow-y-auto">
             <v-container fluidgrid-list-sm>
               <v-layout v-for="(itemCategory, categoryIndex) in applicationCategories" :key="categoryIndex" xs4 column
-                wrap style="border: 0px solid green; display:flex; flex-direction: column;">
-
+                wrap style="display:flex; flex-direction: column;">
                 <v-hover>
-                  <v-list-item slot-scope="{ hover }" :href="itemCategory.link"
-                    :class="getCssClassForCategory(itemCategory.text, hover)">
-                    <div class="d-flex" style="padding-left:0px;">
-
-                      <svg-icon :url="itemCategory.svg" :style="getFontColorForMembersCategory(itemCategory.text)"
-                        />
-                      <v-list-item-content class="mcity-menu-category-member"
-                        :style="getFontColorForMembersCategory(itemCategory.text)"
+                  <v-list-item :href="itemCategory.link" :class="getCssClassForCategory(itemCategory.text, hover)">
+                    <div style="padding-left:0px; display: flex; flex-direction: row; align-items: center;">
+                      <svg-icon :url="itemCategory.svg" :style="getFontColorForMembersCategory(itemCategory.text)" />
+                      
+                      <div  class="mcity-menu-category-member" :style="getFontColorForMembersCategory(itemCategory.text)"
                         style="overflow:visible; font-size: 20px; font-weight: 500; white-space: nowrap;">
                         {{ itemCategory.text.toUpperCase() }}
-                      </v-list-item-content>
+                      </div>
                     </div>
-
                   </v-list-item>
                 </v-hover>
                 <v-layout column wrap style="display: flex; flex-direction: column;">
-                  <v-flex class="Suneeth"
-                    v-for="(item, index) in getCategoryMembers(itemCategory.text)" :key="index" xs3>
+                  <div v-for="(item, index) in getCategoryMembers(itemCategory.text)" :key="index" xs3>
                     <v-list-item :href="item.link" rel="noopener">
-                      <div class="d-flex" style="padding-left:66px;">
+                      <div style="padding-left:4rem; display: flex; flex-direction: row; align-items: center;">
                         <svg-icon :url="item.svg" />
-                        <v-list-item-content class="mcity-menu-category-member" color="primary--text"
+                        <div class="mcity-menu-category-member" color="primary--text"
                           style="overflow:visible; font-size: 18px; font-weight: 400; white-space: nowrap;">
                           {{ item.text }}
-                        </v-list-item-content>
+                        </div>
                       </div>
-
                     </v-list-item>
-                  </v-flex>
+                  </div>
                 </v-layout>
-
-
               </v-layout>
-
             </v-container>
           </v-list>
         </v-menu>
@@ -72,36 +65,36 @@
                 url="https://static.um.city/icons/user-circle-solid.svg" />
             </v-btn>
           </template>
-          <v-list compact style="min-width: 400px; max-width: 400px; max-height: 90vh;" class="overflow-y-auto">
-            <v-list-tile>
-              <v-list-tile-content class="mcity-no-padding">
-                <v-list-tile-title>
+          <v-list compact style="min-width: 400px; max-width: 400px; max-height: 85vh; margin-top:0.25rem" class="overflow-y-auto">
+            <v-list-item>
+              <div class="mcity-no-padding">
+                <v-list-item-title>
                   <a href="https://keys.um.city" rel="noopener" style="font-size: 20px;">
                     {{ fullname }}
                   </a>
-                </v-list-tile-title>
-                <v-list-tile-sub-title style="font-size: 18px;">
+                </v-list-item-title>
+                <div style="font-size: 18px;">
                   {{ username }}
-                </v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
+                </div>
+              </div>
+            </v-list-item>
           </v-list>
           <v-divider style="margin:0px;" />
           <v-list>
-            <v-list-tile>
+            <v-list-item>
               <v-btn flat class="mcity-no-padding" href="https://keys.um.city/password" v-bind="on"
                 style="font-size:20px">
                 Change Password
                 <svg-icon :color="gray" class="ml-2" size="sm" url="https://static.um.city/icons/fingerprint-solid.svg" />
               </v-btn>
-            </v-list-tile>
-            <v-list-tile>
+            </v-list-item>
+            <v-list-item>
               <v-btn flat class="mcity-no-padding" :href="logoutUrl" v-bind="on" style="font-size: 20px;">
                 Logout
                 <svg-icon :color="gray" class="ml-2" size="sm"
                   url="https://static.um.city/icons/sign-out-alt-solid.svg" />
               </v-btn>
-            </v-list-tile>
+            </v-list-item>
           </v-list>
         </v-menu>
       </v-toolbar-items>
@@ -168,6 +161,7 @@ export default {
       appMenu: false,
       clipped: false,
       avatarMenu: false,
+      hover: true,
       applicationLinks: [],
       applicationCategories: [],
       gray: '#606060',
@@ -246,6 +240,8 @@ a.v-list-item:hover {
   overflow: visible;
 }
 
+
+
 .mcity-no-padding {
   padding: 0 0 0 0;
   letter-spacing: inherit;
@@ -264,7 +260,14 @@ a.v-list-item:hover {
   font-size: 16px;
 }
 
+
 svg-icon {
   height: 22px;
 }
+
+.v-list-item__content {
+  /* background-color: #9F3F07; */
+}
+
+
 </style>
