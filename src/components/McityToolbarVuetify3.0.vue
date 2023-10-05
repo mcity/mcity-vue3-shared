@@ -99,7 +99,7 @@
 
 <script>
 import McityLogo from "./McityLogo.vue";
-import SvgIcon from "./SvgIcon";
+import SvgIcon from "../components/SvgIcon.vue";
 export default {
   name: 'McityToolbar',
   components: {
