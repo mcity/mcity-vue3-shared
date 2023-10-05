@@ -1,15 +1,11 @@
 <template>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div>
-    <v-toolbar app dark color="primary" :clipped-left="true" height="45px" style="padding: 0.2rem 1.5rem; margin: auto; box-shadow: 0px 0.5px 0.6px hsl(0deg 0% 63%/ 0.36),
-    0px 1.6px 1.8px -0.8px hsl(0deg 0% 63%/ 0.36),
-    -0.1px 3.9px 4.4px -1.7px hsl(0deg 0% 63%/ 0.36),
-    -0.1px 9.5px 10.7px -2.5px hsl(0deg 0% 63%/ 0.36);">
+    <v-toolbar app dark color="primary" :clipped-left="true" height="45px" class="mcity-toolbar">
       <router-link to="/" class="hidden-sm-and-down">
         <mcity-logo class="mcity-logo-padding-top" />
       </router-link>
       <v-spacer />
-      <v-toolbar-title class="mcity-subtitle" style="font-size: 20px; font-weight: 500;">
+      <v-toolbar-title class="mcity-subtitle mcity-text-standard">
         {{ title }}
       </v-toolbar-title>
       <v-spacer />
@@ -18,36 +14,36 @@
         <v-menu content-class="elevation-1" left v-if="showApplicationMenu" v-model="appMenu" offset-y allow-overflow
           nudge-right="77px">
           <template v-slot:activator="{ props }">
-            <v-btn color="primary" light v-bind="props" style="box-shadow: none;">
-              <div style="color:white; font-size: 1.5rem;">
+            <v-btn class="mcity-strip-shadow" color="primary" light v-bind="props">
+              <div class="mcity-menu-text">
                 MENU
+                <link rel="stylesheet"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <i class="fa fa-bars"></i>
               </div>
             </v-btn>
           </template>
-          <v-list compact style="min-width: 400px; max-width: 400px; max-height: 85vh; margin-top:0.25rem" class="overflow-y-auto">
+          <v-list compact class="mcity-menu-body overflow-y-auto">
             <v-container fluidgrid-list-sm>
-              <v-layout v-for="(itemCategory, categoryIndex) in applicationCategories" :key="categoryIndex" xs4 column
-                wrap style="display:flex; flex-direction: column;">
+              <v-layout class="mcity-menu-order" v-for="(itemCategory, categoryIndex) in applicationCategories"
+                :key="categoryIndex" xs4 column wrap style="">
                 <v-hover>
                   <v-list-item :href="itemCategory.link" :class="getCssClassForCategory(itemCategory.text, hover)">
-                    <div style="padding-left:0px; display: flex; flex-direction: row; align-items: center;">
+                    <div class="mcity-menu-category" style="padding-left: 0rem">
                       <svg-icon :url="itemCategory.svg" :style="getFontColorForMembersCategory(itemCategory.text)" />
-                      
-                      <div  class="mcity-menu-category-member" :style="getFontColorForMembersCategory(itemCategory.text)"
-                        style="overflow:visible; font-size: 20px; font-weight: 500; white-space: nowrap;">
+                      <div class="mcity-menu-category-member mcity-text-standard"
+                        :style="getFontColorForMembersCategory(itemCategory.text)">
                         {{ itemCategory.text.toUpperCase() }}
                       </div>
                     </div>
                   </v-list-item>
                 </v-hover>
-                <v-layout column wrap style="display: flex; flex-direction: column;">
-                  <div v-for="(item, index) in getCategoryMembers(itemCategory.text)" :key="index" xs3>
+                <v-layout class="mcity-menu-order" column wrap>
+                  <div v-for="(item, index) in getCategoryMembers(itemCategory.text)" :key="index">
                     <v-list-item :href="item.link" rel="noopener">
-                      <div style="padding-left:4rem; display: flex; flex-direction: row; align-items: center;">
+                      <div class="mcity-menu-category" style="padding-left: 4rem">
                         <svg-icon :url="item.svg" />
-                        <div class="mcity-menu-category-member" color="primary--text"
-                          style="overflow:visible; font-size: 18px; font-weight: 400; white-space: nowrap;">
+                        <div class="mcity-menu-category-member mcity-text-reduced" color="primary--text">
                           {{ item.text }}
                         </div>
                       </div>
@@ -60,20 +56,20 @@
         </v-menu>
         <v-menu content-class="elevation-1" left v-if="showUserMenu" v-model="avatarMenu" offset-y>
           <template v-slot:activator="{ props }">
-            <v-btn color="primary" dark v-bind="props" style="box-shadow: none;">
-              <svg-icon color="white" size="sm" class="mcity-user-icon mt-1"
+            <v-btn class="mcity-remove-shadow mcity-strip-shadow" color="primary" dark v-bind="props">
+              <svg-icon color="white" size="sm" class="mcity-text-small mt-1"
                 url="https://static.um.city/icons/user-circle-solid.svg" />
             </v-btn>
           </template>
-          <v-list compact style="min-width: 400px; max-width: 400px; max-height: 85vh; margin-top:0.25rem" class="overflow-y-auto">
+          <v-list compact class="mcity-menu-body overflow-y-auto">
             <v-list-item>
               <div class="mcity-no-padding">
                 <v-list-item-title>
-                  <a href="https://keys.um.city" rel="noopener" style="font-size: 20px;">
+                  <a class="mcity-text-standard" href="https://keys.um.city" rel="noopener">
                     {{ fullname }}
                   </a>
                 </v-list-item-title>
-                <div style="font-size: 18px;">
+                <div class="mcity-text-reduced">
                   {{ username }}
                 </div>
               </div>
@@ -82,14 +78,13 @@
           <v-divider style="margin:0px;" />
           <v-list>
             <v-list-item>
-              <v-btn flat class="mcity-no-padding" href="https://keys.um.city/password" v-bind="on"
-                style="font-size:20px">
+              <v-btn flat class="mcity-no-padding mcity-text-standard" href="https://keys.um.city/password" v-bind="on">
                 Change Password
                 <svg-icon :color="gray" class="ml-2" size="sm" url="https://static.um.city/icons/fingerprint-solid.svg" />
               </v-btn>
             </v-list-item>
             <v-list-item>
-              <v-btn flat class="mcity-no-padding" :href="logoutUrl" v-bind="on" style="font-size: 20px;">
+              <v-btn flat class="mcity-no-padding mcity-text-standard" :href="logoutUrl" v-bind="on">
                 Logout
                 <svg-icon :color="gray" class="ml-2" size="sm"
                   url="https://static.um.city/icons/sign-out-alt-solid.svg" />
@@ -218,58 +213,101 @@ export default {
 </script>
 
 <style scoped>
+/* Typography */
+.mcity-text-standard {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 500;
+}
+
+.mcity-text-reduced {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 400;
+}
+
+.mcity-text-small {
+  font-size: 1rem; /* 16 px */
+}
+
+/* Menu */
+.mcity-menu-order {
+  display: flex;
+  flex-direction: column;
+}
+
+.mcity-menu-category {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mcity-menu-category-member {
+  margin-left: 0.625rem; /* 10px */
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.mcity-menu-text {
+  color: white;
+  font-size: 1.5rem;
+}
+
 a.v-list-item:hover {
   text-decoration: none;
 }
 
 .bg-members {
-  margin-top:0.75rem;
+  margin-top: 0.75rem; /* 12px */
   background-color: #C55311;
 }
 
 .bg-members-hover {
-  margin-top: 0.75rem;
+  margin-top: 0.75rem; /* 12px */
   background-color: #9F3F07;
 }
 
-.mcity-subtitle {
-  font-weight: 500;
-  padding-left: 0px;
+.mcity-menu-body {
+  min-width: 25rem; /* 400px */
+  max-width: 25rem; /* 400px */
+  max-height: 85vh;
+  margin-top: 0.25rem; /* 4px */
 }
 
-.mcity-menu-category-member {
-  margin-left: 10px;
-  overflow: visible;
-}
-
-
-
+/* Padding */
 .mcity-no-padding {
   padding: 0 0 0 0;
   letter-spacing: inherit;
 }
 
 .mcity-min-content {
-  min-width: 204px;
+  min-width: 12.75rem; /* 204px */
   width: min-content;
 }
 
 .mcity-logo-padding-top {
-  padding-top: 4px;
+  padding-top: 0.25rem; /* 4px */
 }
 
-.mcity-user-icon {
-  font-size: 16px;
-}
-
-
+/* Modifiers */
 svg-icon {
-  height: 22px;
+  height: 1.375rem; /* 22px */
 }
 
-.v-list-item__content {
-  /* background-color: #9F3F07; */
+.mcity-strip-shadow {
+  box-shadow: none;
 }
 
+.mcity-subtitle {
+  font-weight: 500;
+  margin-left: 0rem;
+  text-align: right;
+}
 
+.mcity-toolbar {
+  padding: 0.2rem 1.5rem; /* 0.2rem 1.5rem */
+  margin: auto;
+  box-shadow: 0px 0.5px 0.6px hsl(0deg 0% 63%/ 0.36),
+    0px 1.6px 1.8px -0.8px hsl(0deg 0% 63%/ 0.36),
+    -0.1px 3.9px 4.4px -1.7px hsl(0deg 0% 63%/ 0.36),
+    -0.1px 9.5px 10.7px -2.5px hsl(0deg 0% 63%/ 0.36);
+}
 </style>
