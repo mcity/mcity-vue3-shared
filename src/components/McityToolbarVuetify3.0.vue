@@ -5,7 +5,7 @@
         <mcity-logo class="mcity-logo-padding-top" />
       </router-link>
       <v-spacer />
-      <v-toolbar-title class="mcity-subtitle mcity-text-standard">
+      <v-toolbar-title class="mcity-text-standard unselectable" style="text-align: right; font-weight: 500;">
         {{ title }}
       </v-toolbar-title>
       <v-spacer />
@@ -215,17 +215,20 @@ export default {
 <style scoped>
 /* Typography */
 .mcity-text-standard {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
+  /* 20px */
   font-weight: 500;
 }
 
 .mcity-text-reduced {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
+  /* 18px */
   font-weight: 400;
 }
 
 .mcity-text-small {
-  font-size: 1rem; /* 16 px */
+  font-size: 1rem;
+  /* 16 px */
 }
 
 /* Menu */
@@ -241,7 +244,8 @@ export default {
 }
 
 .mcity-menu-category-member {
-  margin-left: 0.625rem; /* 10px */
+  margin-left: 0.625rem;
+  /* 10px */
   overflow: visible;
   white-space: nowrap;
 }
@@ -256,20 +260,25 @@ a.v-list-item:hover {
 }
 
 .bg-members {
-  margin-top: 0.75rem; /* 12px */
+  margin-top: 0.75rem;
+  /* 12px */
   background-color: #C55311;
 }
 
 .bg-members-hover {
-  margin-top: 0.75rem; /* 12px */
+  margin-top: 0.75rem;
+  /* 12px */
   background-color: #9F3F07;
 }
 
 .mcity-menu-body {
-  min-width: 25rem; /* 400px */
-  max-width: 25rem; /* 400px */
+  min-width: 25rem;
+  /* 400px */
+  max-width: 25rem;
+  /* 400px */
   max-height: 85vh;
-  margin-top: 0.25rem; /* 4px */
+  margin-top: 0.25rem;
+  /* 4px */
 }
 
 /* Padding */
@@ -279,17 +288,20 @@ a.v-list-item:hover {
 }
 
 .mcity-min-content {
-  min-width: 12.75rem; /* 204px */
+  min-width: 12.75rem;
+  /* 204px */
   width: min-content;
 }
 
 .mcity-logo-padding-top {
-  padding-top: 0.25rem; /* 4px */
+  padding-top: 0.25rem;
+  /* 4px */
 }
 
 /* Modifiers */
 svg-icon {
-  height: 1.375rem; /* 22px */
+  height: 1.375rem;
+  /* 22px */
 }
 
 .mcity-strip-shadow {
@@ -303,11 +315,24 @@ svg-icon {
 }
 
 .mcity-toolbar {
-  padding: 0.2rem 1.5rem; /* 0.2rem 1.5rem */
+  padding: 0.2rem 1.5rem;
+  /* 0.2rem 1.5rem */
   margin: auto;
   box-shadow: 0px 0.5px 0.6px hsl(0deg 0% 63%/ 0.36),
     0px 1.6px 1.8px -0.8px hsl(0deg 0% 63%/ 0.36),
     -0.1px 3.9px 4.4px -1.7px hsl(0deg 0% 63%/ 0.36),
     -0.1px 9.5px 10.7px -2.5px hsl(0deg 0% 63%/ 0.36);
+}
+
+.unselectable {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.v-toolbar__content>.v-toolbar-title:deep() {
+  margin-inline-start: 0px;
 }
 </style>
