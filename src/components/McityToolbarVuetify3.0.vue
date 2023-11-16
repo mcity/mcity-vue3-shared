@@ -1,15 +1,13 @@
 <template>
   <div>
     <v-toolbar app dark color="primary" :clipped-left="true" height="45px" class="mcity-toolbar">
-      <router-link to="/" class="hidden-sm-and-down">
+      <router-link to="/" class="hidden-sm-and-down" style="width:30%">
         <mcity-logo class="mcity-logo-padding-top" />
       </router-link>
-      <v-spacer />
-      <v-toolbar-title class="mcity-text-standard unselectable" style="text-align: right; font-weight: 500;">
+      <v-toolbar-title class="mcity-text-standard unselectable" style="text-align: center; font-weight: 500; width:30%">
         {{ title }}
       </v-toolbar-title>
-      <v-spacer />
-      <v-toolbar-items>
+      <v-toolbar-items style="width:30%; justify-content: end;">
         <slot name="buttons" />
         <v-menu content-class="elevation-1" left v-if="showApplicationMenu" v-model="appMenu" offset-y allow-overflow
           nudge-right="77px">
