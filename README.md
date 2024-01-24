@@ -1,19 +1,20 @@
 # Mcity-vue3-shared
-Common vue header/nav & components used across Mcity projects.
+Menu and toolbar used across Mcity vue3 projects.
 
 ## Requirements
 
-Mcity-vue3-auth uses a number of open source projects to work properly:
--  Node version ~14.0.0 
+Reqiures:
+-  Node 14
 - [[Vue.js](https://vuejs.org/) v3] - Used for our frontend.
 
-## Env Setup
+## setup
 
-- Create file `.env.local` if it does not already exist.
-- Add the following variables to this file.
+- Create file `.nrpmrc` in your working directory if it doen't exist.
+- Create a github token through: https://github.com
 
-```
-GITHUB_PACKAGES_TOKEN="Create token at https://github.com/settings/tokens"
+
+```npm i
+   npm run dev
 ```
 
 ## Toolbar
