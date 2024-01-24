@@ -11,9 +11,10 @@ Reqiures:
 
 - Create file `.nrpmrc` in your working directory if it doen't exist.
 - Create a github token through: https://github.com
+- run the following commands to build & serve:
 
-
-```npm i
+```
+    npm i
    npm run dev
 ```
 
